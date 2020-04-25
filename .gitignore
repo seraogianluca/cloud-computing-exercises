@@ -72,3 +72,7 @@ movingaverage/.settings/org.eclipse.jdt.apt.core.prefs
 movingaverage/.settings/org.eclipse.jdt.core.prefs
 movingaverage/.settings/org.eclipse.m2e.core.prefs
 movingaverage/.project
+.vscode/settings.json
+movingaverage/target/maven-archiver/pom.properties
+movingaverage/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+movingaverage/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
