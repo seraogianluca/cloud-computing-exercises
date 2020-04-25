@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.ListCellRenderer;
+
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -72,17 +74,20 @@ public class InMemoryMovingAverage {
             
             double sum = 0;
             double average = 0;
-            for(int i = 0; i<windowSize; i++){
-                sum = sum + list.get(i).getAverage();
+            Text outputval = new Text();
+
+            for (int i = 0; i < windowSize - 1; i++)
+               sum += list.get(i).getAverage();
+
+            for(int i = windowSize - 1; i < list.size(); i++){
+                sum += list.get(i).getAverage();
                 average = sum / windowSize;
 
                 String date = DateUtil.getStringFromLong(list.get(i).getTimestamp());
-                Text outputval = new Text();
-                outputval.set(date +", " +average);
+                outputval.set(date +", " + average);
                 context.write(key, outputval); 
-                sum = sum - list.get(i - windowSize + 1).getAverage();
+                sum -= list.get(i - windowSize + 1).getAverage();
             }
-
         }
     }
 
