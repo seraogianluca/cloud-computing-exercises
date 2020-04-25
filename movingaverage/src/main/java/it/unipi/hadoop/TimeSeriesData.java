@@ -1,72 +1,76 @@
 package it.unipi.hadoop;
 
-import java.security.Timestamp;
 import java.io.*;
-import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 
-public class TimeSeriesData implements WritableComparable {
+public class TimeSeriesData implements Writable, Comparable<TimeSeriesData> {
     private long timestamp;
     private double average;
 
+    public static TimeSeriesData copy(final TimeSeriesData tsd) {
+        return new TimeSeriesData(tsd.timestamp, tsd.average);
+    }
+
     public TimeSeriesData() {}
 
-    public TimeSeriesData(long t, double a) {
-        setTimestamp(t);
-        setAverage(a);
+    public TimeSeriesData(final long t, final double a) {
+        this.set(t,a);
     }
 
     public long getTimestamp() {
-        return timestamp;
+        return this.timestamp;
     }
 
     public double getAverage() {
-        return average;
+        return this.average;
     }
 
-    public void setTimestamp(long t) {
-        timestamp = t;
+    public void set(final long t, final double a) {
+        this.timestamp = t;
+        this.average = a;
     }
 
-    public void setAverage(double a) {
-        average = a;
+    public void readFields(final DataInput in) throws IOException {
+        this.timestamp = in.readLong();
+        this.average = in.readDouble();
     }
 
-    public void readFields(DataInput in) throws IOException {
-        timestamp = in.readLong();
-        average = in.readDouble();
-    }
-
-    public void write(DataOutput out) throws IOException {
+    @Override
+    public void write(final DataOutput out) throws IOException {
         out.writeLong(timestamp);
         out.writeDouble(average);
     }
 
-    public boolean equals(Object o) {
-        if(!(o instanceof TimeSeriesData))
+    @Override
+    public boolean equals(final Object o) {
+        if (!(o instanceof TimeSeriesData))
             return false;
 
-        TimeSeriesData other = (TimeSeriesData)o;
-        if(this.timestamp == other.timestamp && this.average == other.average)
+        final TimeSeriesData other = (TimeSeriesData) o;
+        if (this.timestamp == other.timestamp && this.average == other.average)
             return true;
-        
+
         return false;
     }
 
+    @Override
     public int hashCode() {
-        LongWritable ts = new LongWritable(timestamp);
-        DoubleWritable a = new DoubleWritable(average);
+        final LongWritable ts = new LongWritable(timestamp);
+        final DoubleWritable a = new DoubleWritable(average);
 
         return ts.hashCode() + a.hashCode();
     }
 
-    public int compareTo(Object o) {
-        long thisTime = this.timestamp;
-        long thatTime = ((TimeSeriesData)o).timestamp;
-        return (thisTime<thatTime ? -1 : (thisTime==thatTime ? 0 : 1));
+    @Override
+    public int compareTo(final TimeSeriesData o) {
+        final long thisTime = this.timestamp;
+        final long thatTime = o.timestamp;
+        return (thisTime < thatTime ? -1 : (thisTime == thatTime ? 0 : 1));
     }
 
+    @Override
     public String toString() {
         return Long.toString(timestamp) + ", " + Double.toString(average);
     }

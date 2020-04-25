@@ -67,3 +67,8 @@ Temporary Items
 .history
 
 # End of https://www.gitignore.io/api/java,macos,visualstudiocode
+movingaverage/.classpath
+movingaverage/.settings/org.eclipse.jdt.apt.core.prefs
+movingaverage/.settings/org.eclipse.jdt.core.prefs
+movingaverage/.settings/org.eclipse.m2e.core.prefs
+movingaverage/.project
