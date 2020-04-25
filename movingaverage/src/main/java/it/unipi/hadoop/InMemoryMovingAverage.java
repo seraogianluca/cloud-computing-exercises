@@ -96,9 +96,13 @@ public class InMemoryMovingAverage {
 
         Job job = Job.getInstance(conf, "moving average");
         job.setJarByClass(InMemoryMovingAverage.class);
+
         job.setMapperClass(ParseMapper.class);
-        job.setCombinerClass(SortAverageReducer.class);
         job.setReducerClass(SortAverageReducer.class);
+
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(TimeSeriesData.class);
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
