@@ -76,3 +76,15 @@ movingaverage/.project
 movingaverage/target/maven-archiver/pom.properties
 movingaverage/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 movingaverage/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+matrix/.classpath
+matrix/.project
+matrix/.settings/org.eclipse.jdt.apt.core.prefs
+matrix/.settings/org.eclipse.jdt.core.prefs
+matrix/.settings/org.eclipse.m2e.core.prefs
+wordcount/.classpath
+wordcount/.project
+wordcount/.settings/org.eclipse.jdt.apt.core.prefs
+wordcount/.settings/org.eclipse.jdt.core.prefs
+wordcount/.settings/org.eclipse.m2e.core.prefs
+wordcount/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+wordcount/target/maven-archiver/pom.properties

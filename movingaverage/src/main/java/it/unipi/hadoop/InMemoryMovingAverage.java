@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.ListCellRenderer;
-
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
