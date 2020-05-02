@@ -88,3 +88,6 @@ wordcount/.settings/org.eclipse.jdt.core.prefs
 wordcount/.settings/org.eclipse.m2e.core.prefs
 wordcount/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 wordcount/target/maven-archiver/pom.properties
+matrix/target/maven-archiver/pom.properties
+matrix/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+matrix/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst

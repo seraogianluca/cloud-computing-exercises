@@ -4,9 +4,9 @@ import numpy as np
 
 # Matrix M of size I x J
 # Matrix N of size J x K
-I=100
-J=1000
-K=100
+I=10
+J=20
+K=10
 
 # set random seed to repeat
 np.random.seed(42)
